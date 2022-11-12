@@ -1,6 +1,9 @@
 import { View, Text } from "react-native";
+import { useGetPokemonByNameQuery } from "../services/pokemon";
 
 const HomeScreen = () => {
+  const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
+  console.log(data);
   return (
     <View
       style={{
