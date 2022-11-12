@@ -43,8 +43,13 @@ const styles = StyleSheet.create({
   buttonsContainer: {
     display: "flex",
     width: "100%",
-    flexDirection: "horizontal",
+    flexDirection: "row",
     justifyContent: "space-between",
+    padding: 20,
+  },
+  paginationButton: {
+    width: "30%",
+    padding: 5,
   },
 });
 
@@ -78,18 +83,22 @@ const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>{toRender}</View>
-        <View
-          style={{
-            display: "flex",
-            width: "100%",
-            justifyContent: "space-between",
-          }}
-        >
-          <Button title={"Hi"}></Button>
-          <Button title={"Hi"}></Button>
+        <View style={{ ...styles.buttonsContainer }}>
+          <Button
+            title={"Hi"}
+            style={{ ...styles.paginationButton }}
+            onPress={() => console.log("Pressed")}
+          >
+            Previous
+          </Button>
+          <Button
+            title={"Hi"}
+            style={{ ...styles.paginationButton }}
+            onPress={() => console.log("Pressed")}
+          >
+            Next
+          </Button>
         </View>
-        <Button title={"Hi"} style={{ width: 20, height: 20 }}></Button>
-        <Text>Hi</Text>
       </ScrollView>
     </SafeAreaView>
   );
