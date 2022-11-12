@@ -5,6 +5,7 @@ import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import PokemonsList from "../components/Lists/PokemonList";
 import { ActivityIndicator } from "react-native-paper";
 import { Button } from "react-native-paper";
+import PaginationButtons from "../components/PaginationButtons";
 
 const styles = StyleSheet.create({
   container: {
@@ -96,34 +97,13 @@ const HomeScreen = () => {
     >
       <Button onPress={refetch}>Refresh</Button>
 
-      <View style={{ ...styles.buttonsContainer }}>
-        <Button
-          style={{
-            ...styles.paginationButton,
-            ...getPaginationButtonOpacity(isPrevActive),
-          }}
-          onPress={decrementPage}
-          disabled={!isPrevActive}
-        >
-          Previous
-        </Button>
-
-        <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-        >
-          <Text>Page: {page}</Text>
-        </View>
-        <Button
-          style={{
-            ...styles.paginationButton,
-            ...getPaginationButtonOpacity(isNextActive),
-          }}
-          onPress={incrementPage}
-          disabled={!isNextActive}
-        >
-          Next
-        </Button>
-      </View>
+      <PaginationButtons
+        isPrevActive={isPrevActive}
+        isNextActive={isNextActive}
+        page={page}
+        incrementPage={incrementPage}
+        decrementPage={decrementPage}
+      />
     </View>
   );
 
@@ -132,34 +112,13 @@ const HomeScreen = () => {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>{toRender}</View>
-        <View style={{ ...styles.buttonsContainer }}>
-          <Button
-            style={{
-              ...styles.paginationButton,
-              ...getPaginationButtonOpacity(isPrevActive),
-            }}
-            onPress={decrementPage}
-            disabled={!isPrevActive}
-          >
-            Previous
-          </Button>
-
-          <View
-            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
-          >
-            <Text>Page: {page}</Text>
-          </View>
-          <Button
-            style={{
-              ...styles.paginationButton,
-              ...getPaginationButtonOpacity(isNextActive),
-            }}
-            onPress={incrementPage}
-            disabled={!isNextActive}
-          >
-            Next
-          </Button>
-        </View>
+        <PaginationButtons
+          isPrevActive={isPrevActive}
+          isNextActive={isNextActive}
+          page={page}
+          incrementPage={incrementPage}
+          decrementPage={decrementPage}
+        />
       </ScrollView>
     </SafeAreaView>
   );
