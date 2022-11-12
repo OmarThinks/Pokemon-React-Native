@@ -3,7 +3,7 @@ import { useGetPokemonsPaginatorQuery } from "../services/pokemon";
 import { useState } from "react";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import PokemonsList from "../components/Lists/PokemonList";
-
+import { ActivityIndicator } from "react-native-paper";
 import { Button } from "react-native-paper";
 
 const styles = StyleSheet.create({
@@ -59,7 +59,7 @@ const HomeScreen = () => {
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
   ) : isLoading1 ? (
-    <Text>Loading...</Text>
+    <ActivityIndicator size="large" />
   ) : data ? (
     <View>
       <PokemonsList data={data} />
@@ -74,7 +74,7 @@ const HomeScreen = () => {
           <Button
             title={"Hi"}
             style={{ ...styles.paginationButton }}
-            onPress={() => console.log("Pressed")}
+            onPress={decrementPage}
             disabled={!isPrevActive}
           >
             Previous
@@ -82,7 +82,7 @@ const HomeScreen = () => {
           <Button
             title={"Hi"}
             style={{ ...styles.paginationButton }}
-            onPress={() => console.log("Pressed")}
+            onPress={incrementPage}
             disabled={!isNextActive}
           >
             Next
