@@ -1,9 +1,33 @@
 import { View, Text } from "react-native";
-import { useGetPokemonByNameQuery } from "../services/pokemon";
-
+import { useGetPokemonsPaginatorQuery } from "../services/pokemon";
+import { useState } from "react";
 const HomeScreen = () => {
-  const { data, error, isLoading } = useGetPokemonByNameQuery("bulbasaur");
+  const [page, setPage] = useState(1);
+
+  const incrementPage = () => {
+    setPage(page + 1);
+  };
+  const decrementPage = () => {
+    setPage(page - 1);
+  };
+
+  const {
+    data,
+    error,
+    isLoading: isLoading1,
+  } = useGetPokemonsPaginatorQuery(page);
   console.log(data);
+
+  const toRender = error ? (
+    <Text>Oh no, there was an error</Text>
+  ) : isLoading1 ? (
+    <Text>Loading...</Text>
+  ) : data ? (
+    <Text>
+      <Text>loaded</Text>
+    </Text>
+  ) : null;
+
   return (
     <View
       style={{
@@ -13,6 +37,7 @@ const HomeScreen = () => {
       }}
     >
       <Text>Universal React with Expo</Text>
+      {toRender}
     </View>
   );
 };
