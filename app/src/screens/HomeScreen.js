@@ -19,10 +19,18 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   paginationButton: {
-    width: "50%",
+    width: "35%",
     padding: 5,
+    backgroundColor: "#f9c2ff",
   },
 });
+
+const getPaginationButtonOpacity = (isActive) => {
+  if (!isActive) {
+    return { opacity: 0 };
+  }
+  return {};
+};
 
 const HomeScreen = () => {
   const [page, setPage] = useState(1);
@@ -42,6 +50,14 @@ const HomeScreen = () => {
 
   let isNextActive = false;
   let isPrevActive = false;
+  console.log(page);
+
+  const getPaginationButtonOpacity = (isActive) => {
+    if (!isActive) {
+      return { opacity: 0 };
+    }
+    return {};
+  };
 
   if (!error) {
     if (!isLoading1) {
@@ -57,9 +73,16 @@ const HomeScreen = () => {
   console.log(isPrevActive, isNextActive);
 
   const toRender = error ? (
-    <Text>Oh no, there was an error</Text>
+    <Button>Refresh</Button>
   ) : isLoading1 ? (
-    <ActivityIndicator size="large" />
+    <ActivityIndicator
+      size="large"
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    />
   ) : data ? (
     <View>
       <PokemonsList data={data} />
@@ -72,16 +95,26 @@ const HomeScreen = () => {
         <View>{toRender}</View>
         <View style={{ ...styles.buttonsContainer }}>
           <Button
-            title={"Hi"}
-            style={{ ...styles.paginationButton }}
+            style={{
+              ...styles.paginationButton,
+              ...getPaginationButtonOpacity(isPrevActive),
+            }}
             onPress={decrementPage}
             disabled={!isPrevActive}
           >
             Previous
           </Button>
+
+          <View
+            style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          >
+            <Text>Page: {page}</Text>
+          </View>
           <Button
-            title={"Hi"}
-            style={{ ...styles.paginationButton }}
+            style={{
+              ...styles.paginationButton,
+              ...getPaginationButtonOpacity(isNextActive),
+            }}
             onPress={incrementPage}
             disabled={!isNextActive}
           >
