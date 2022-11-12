@@ -60,6 +60,14 @@ const ErrorScreen = ({
   );
 };
 
+const LoadingScreen = () => {
+  return (
+    <View style={{ ...styles.centererView }}>
+      <ActivityIndicator size="large" />
+    </View>
+  );
+};
+
 const HomeScreen = () => {
   const [page, setPage] = useState(1);
 
@@ -107,30 +115,14 @@ const HomeScreen = () => {
       refetch={refetch}
     />
   ) : isFetching ? (
-    <ActivityIndicator
-      size="large"
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    />
+    <LoadingScreen />
   ) : data ? (
     <View>
       <PokemonsList data={data} />
     </View>
   ) : null;
 
-  toRender = (
-    <ErrorScreen
-      page={page}
-      isPrevActive={isPrevActive}
-      isNextActive={isNextActive}
-      incrementPage={incrementPage}
-      decrementPage={decrementPage}
-      refetch={refetch}
-    />
-  );
+  toRender = <LoadingScreen />;
 
   return toRender;
   return (
