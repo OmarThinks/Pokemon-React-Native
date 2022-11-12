@@ -25,7 +25,6 @@ const styles = StyleSheet.create({
 const DetailsScreen = () => {
   return (
     <View>
-      {" "}
       <Text>Details</Text>
     </View>
   );

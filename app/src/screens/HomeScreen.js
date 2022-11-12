@@ -95,7 +95,7 @@ const ListScreen = ({
   );
 };
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [page, setPage] = useState(1);
 
   const incrementPage = () => {
@@ -147,6 +147,17 @@ const HomeScreen = () => {
       data={data}
     />
   ) : null;
+
+  return (
+    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+      <Text>Home Screen</Text>
+      <Button
+        title="Go to Details"
+        onPress={() => navigation.navigate("Details")}
+        style={{ backgroundColor: "red" }}
+      />
+    </View>
+  );
 
   return toRender;
 };
