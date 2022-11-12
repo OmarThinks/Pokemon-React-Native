@@ -1,5 +1,4 @@
 import { View, Text } from "react-native";
-
 // App should be here so that autocomplete works
 
 export default function App() {
