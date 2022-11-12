@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   paginationButton: {
-    width: "30%",
+    width: "50%",
     padding: 5,
   },
 });
@@ -40,6 +40,22 @@ const HomeScreen = () => {
     isFetching: isLoading1,
   } = useGetPokemonsPaginatorQuery(page);
 
+  let isNextActive = false;
+  let isPrevActive = false;
+
+  if (!error) {
+    if (!isLoading1) {
+      if (data.next != null) {
+        isNextActive = true;
+      }
+      if (data.previous != null) {
+        isPrevActive = true;
+      }
+    }
+  }
+
+  console.log(isPrevActive, isNextActive);
+
   const toRender = error ? (
     <Text>Oh no, there was an error</Text>
   ) : isLoading1 ? (
@@ -59,6 +75,7 @@ const HomeScreen = () => {
             title={"Hi"}
             style={{ ...styles.paginationButton }}
             onPress={() => console.log("Pressed")}
+            disabled={!isPrevActive}
           >
             Previous
           </Button>
@@ -66,6 +83,7 @@ const HomeScreen = () => {
             title={"Hi"}
             style={{ ...styles.paginationButton }}
             onPress={() => console.log("Pressed")}
+            disabled={!isNextActive}
           >
             Next
           </Button>

@@ -9,7 +9,7 @@ export const pokemonApi = createApi({
     }),
     getPokemonsPaginator: builder.query({
       query: (pageNumber) => {
-        const offset = pageNumber * 20;
+        const offset = (pageNumber - 1) * 20;
         return `pokemon/?offset=${offset}&limit=20`;
       },
     }),
