@@ -1,6 +1,7 @@
 import { Text } from "react-native-paper";
 import { View } from "react-native";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
+import { URL, URLSearchParams } from "react-native-url-polyfill";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,10 +24,12 @@ const styles = StyleSheet.create({
 });
 
 const DetailsScreen = ({ navigation, route }) => {
-  const { url } = route.params;
+  const { name } = route.params;
+  console.log(name);
+
   return (
-    <View>
-      <Text>Details</Text>
+    <View style={{ ...styles.centererView }}>
+      <Text>{name}</Text>
     </View>
   );
 };
