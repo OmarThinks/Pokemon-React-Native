@@ -1,10 +1,9 @@
 module.exports = function (api) {
   api.cache(true);
   return {
-    presets: ["react-native"],
+    presets: ["babel-preset-expo", "react-native"],
     plugins: [],
     sourceMaps: true,
   };
 };
 //"babel-preset-expo",
-
