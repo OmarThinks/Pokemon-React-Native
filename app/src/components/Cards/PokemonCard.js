@@ -1,13 +1,13 @@
 import { View, Text } from "react-native";
 import { StyleSheet, StatusBar } from "react-native";
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const RenderItem = ({ item }) => <Item title={item.name} />;
+const PokemonCard = ({ item }) => {
+  return (
+    <View style={styles.item}>
+      <Text style={styles.title}>{item.name}</Text>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   item: {
@@ -21,4 +21,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RenderItem;
+export default PokemonCard;
