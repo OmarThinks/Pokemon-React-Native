@@ -3,7 +3,10 @@ import { store } from "./app/store";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
 
-const Home = () => {
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const HomeScreen = () => {
   return (
     <View
       style={{
@@ -17,11 +20,17 @@ const Home = () => {
   );
 };
 
+const Stack = createNativeStackNavigator();
+
 export default function App() {
   return (
     <Provider store={store}>
       <PaperProvider>
-        <Home />
+        <NavigationContainer>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
+          </Stack.Navigator>
+        </NavigationContainer>
       </PaperProvider>
     </Provider>
   );
