@@ -42,11 +42,8 @@ const HomeScreen = () => {
     setPage(page - 1);
   };
 
-  const {
-    data,
-    error,
-    isFetching: isLoading1,
-  } = useGetPokemonsPaginatorQuery(page);
+  const { data, error, isFetching, refetch } =
+    useGetPokemonsPaginatorQuery(page);
 
   let isNextActive = false;
   let isPrevActive = false;
@@ -60,7 +57,7 @@ const HomeScreen = () => {
   };
 
   if (!error) {
-    if (!isLoading1) {
+    if (!isFetching) {
       if (data.next != null) {
         isNextActive = true;
       }
@@ -72,9 +69,9 @@ const HomeScreen = () => {
 
   console.log(isPrevActive, isNextActive);
 
-  const toRender = error ? (
-    <Button>Refresh</Button>
-  ) : isLoading1 ? (
+  let toRender = error ? (
+    <Button onPress={refetch}>Refresh</Button>
+  ) : isFetching ? (
     <ActivityIndicator
       size="large"
       style={{
@@ -89,6 +86,48 @@ const HomeScreen = () => {
     </View>
   ) : null;
 
+  toRender = (
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Button onPress={refetch}>Refresh</Button>
+
+      <View style={{ ...styles.buttonsContainer }}>
+        <Button
+          style={{
+            ...styles.paginationButton,
+            ...getPaginationButtonOpacity(isPrevActive),
+          }}
+          onPress={decrementPage}
+          disabled={!isPrevActive}
+        >
+          Previous
+        </Button>
+
+        <View
+          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+        >
+          <Text>Page: {page}</Text>
+        </View>
+        <Button
+          style={{
+            ...styles.paginationButton,
+            ...getPaginationButtonOpacity(isNextActive),
+          }}
+          onPress={incrementPage}
+          disabled={!isNextActive}
+        >
+          Next
+        </Button>
+      </View>
+    </View>
+  );
+
+  return toRender;
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
