@@ -1,44 +1,15 @@
 import { View, Text } from "react-native";
 import { useGetPokemonsPaginatorQuery } from "../services/pokemon";
 import { useState } from "react";
-import {
-  SafeAreaView,
-  FlatList,
-  StyleSheet,
-  StatusBar,
-  ScrollView,
-} from "react-native";
+import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
+import PokemonsList from "../components/Lists/PokemonList";
 
 import { Button } from "react-native-paper";
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const RenderItem = ({ item }) => <Item title={item.name} />;
-
-const PokemonsList = ({ data }) => {
-  const toReturn = data.results.map((pokemon) => (
-    <RenderItem item={pokemon} key={pokemon.name} />
-  ));
-  return toReturn;
-};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
-  },
-  item: {
-    backgroundColor: "#f9c2ff",
-    padding: 20,
-    marginVertical: 8,
-    marginHorizontal: 16,
-  },
-  title: {
-    fontSize: 32,
   },
   buttonsContainer: {
     display: "flex",
