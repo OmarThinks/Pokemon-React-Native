@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import { store } from "./app/store";
 import { Provider as PaperProvider } from "react-native-paper";
 import { Provider } from "react-redux";
@@ -6,19 +5,7 @@ import { Provider } from "react-redux";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const HomeScreen = () => {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Universal React with Expo</Text>
-    </View>
-  );
-};
+import HomeScreen from "./screens/HomeScreen";
 
 const Stack = createNativeStackNavigator();
 
