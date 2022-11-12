@@ -22,7 +22,8 @@ const styles = StyleSheet.create({
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
-const DetailsScreen = () => {
+const DetailsScreen = ({ navigation, route }) => {
+  const { url } = route.params;
   return (
     <View>
       <Text>Details</Text>

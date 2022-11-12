@@ -3,7 +3,10 @@ import { StyleSheet, StatusBar } from "react-native";
 import { Card } from "react-native-paper";
 const PokemonCard = ({ item, navigation }) => {
   return (
-    <Card style={styles.item} onPress={() => navigation.navigate("Details")}>
+    <Card
+      style={styles.item}
+      onPress={() => navigation.navigate("Details", item)}
+    >
       <Text style={styles.title}>{item.name}</Text>
     </Card>
   );
