@@ -1,5 +1,6 @@
 import { Text } from "react-native-paper";
 import { View } from "react-native";
+import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
