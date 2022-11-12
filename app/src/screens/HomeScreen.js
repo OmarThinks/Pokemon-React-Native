@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     padding: 20,
   },
-  paginationButton: {
+  button: {
     width: "35%",
     padding: 5,
     backgroundColor: "#f9c2ff",
   },
+  centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
 const getPaginationButtonOpacity = (isActive) => {
@@ -31,6 +32,32 @@ const getPaginationButtonOpacity = (isActive) => {
     return { opacity: 0 };
   }
   return {};
+};
+
+const ErrorScreen = ({
+  page,
+  refetch,
+  isPrevActive,
+  isNextActive,
+  incrementPage,
+  decrementPage,
+}) => {
+  return (
+    <View style={{ ...styles.centererView }}>
+      <Text style={{ padding: 20 }}>Something went wrong ...</Text>
+      <Button onPress={refetch} style={{ ...styles.button }}>
+        Refresh
+      </Button>
+
+      <PaginationButtons
+        isPrevActive={isPrevActive}
+        isNextActive={isNextActive}
+        page={page}
+        incrementPage={incrementPage}
+        decrementPage={decrementPage}
+      />
+    </View>
+  );
 };
 
 const HomeScreen = () => {
@@ -71,7 +98,14 @@ const HomeScreen = () => {
   console.log(isPrevActive, isNextActive);
 
   let toRender = error ? (
-    <Button onPress={refetch}>Refresh</Button>
+    <ErrorScreen
+      page={page}
+      isPrevActive={isPrevActive}
+      isNextActive={isNextActive}
+      incrementPage={incrementPage}
+      decrementPage={decrementPage}
+      refetch={refetch}
+    />
   ) : isFetching ? (
     <ActivityIndicator
       size="large"
@@ -88,23 +122,14 @@ const HomeScreen = () => {
   ) : null;
 
   toRender = (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Button onPress={refetch}>Refresh</Button>
-
-      <PaginationButtons
-        isPrevActive={isPrevActive}
-        isNextActive={isNextActive}
-        page={page}
-        incrementPage={incrementPage}
-        decrementPage={decrementPage}
-      />
-    </View>
+    <ErrorScreen
+      page={page}
+      isPrevActive={isPrevActive}
+      isNextActive={isNextActive}
+      incrementPage={incrementPage}
+      decrementPage={decrementPage}
+      refetch={refetch}
+    />
   );
 
   return toRender;
