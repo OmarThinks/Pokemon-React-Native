@@ -1,7 +1,7 @@
 import { Text } from "react-native-paper";
 import { View } from "react-native";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
-import { URL, URLSearchParams } from "react-native-url-polyfill";
+import { useGetPokemonByNameQuery } from "../services/pokemon";
 
 const styles = StyleSheet.create({
   container: {
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
 const DetailsScreen = ({ navigation, route }) => {
   const { name } = route.params;
   console.log(name);
-
+  const { data, error, isFetching, refetch } = useGetPokemonByNameQuery(name);
+  console.log(data);
   return (
     <View style={{ ...styles.centererView }}>
       <Text>{name}</Text>
