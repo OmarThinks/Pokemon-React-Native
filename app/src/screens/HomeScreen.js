@@ -27,13 +27,6 @@ const styles = StyleSheet.create({
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
-const getPaginationButtonOpacity = (isActive) => {
-  if (!isActive) {
-    return { opacity: 0 };
-  }
-  return {};
-};
-
 const ErrorScreen = ({
   page,
   refetch,
@@ -41,11 +34,17 @@ const ErrorScreen = ({
   isNextActive,
   incrementPage,
   decrementPage,
+  isFetching,
 }) => {
   return (
     <View style={{ ...styles.centererView }}>
       <Text style={{ padding: 20 }}>Something went wrong ...</Text>
-      <Button onPress={refetch} style={{ ...styles.button }}>
+      <Button
+        onPress={refetch}
+        style={{ ...styles.button }}
+        disabled={isFetching}
+        loading={isFetching}
+      >
         Refresh
       </Button>
 
@@ -68,6 +67,34 @@ const LoadingScreen = () => {
   );
 };
 
+const ListScreen = ({
+  data,
+  page,
+  isPrevActive,
+  isNextActive,
+  incrementPage,
+  decrementPage,
+}) => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <View>
+          <View>
+            <PokemonsList data={data} />
+          </View>
+        </View>
+        <PaginationButtons
+          isPrevActive={isPrevActive}
+          isNextActive={isNextActive}
+          page={page}
+          incrementPage={incrementPage}
+          decrementPage={decrementPage}
+        />
+      </ScrollView>
+    </SafeAreaView>
+  );
+};
+
 const HomeScreen = () => {
   const [page, setPage] = useState(1);
 
@@ -84,13 +111,6 @@ const HomeScreen = () => {
   let isNextActive = false;
   let isPrevActive = false;
   console.log(page);
-
-  const getPaginationButtonOpacity = (isActive) => {
-    if (!isActive) {
-      return { opacity: 0 };
-    }
-    return {};
-  };
 
   if (!error) {
     if (!isFetching) {
@@ -113,32 +133,22 @@ const HomeScreen = () => {
       incrementPage={incrementPage}
       decrementPage={decrementPage}
       refetch={refetch}
+      isFetching={isFetching}
     />
   ) : isFetching ? (
     <LoadingScreen />
   ) : data ? (
-    <View>
-      <PokemonsList data={data} />
-    </View>
+    <ListScreen
+      page={page}
+      isPrevActive={isPrevActive}
+      isNextActive={isNextActive}
+      incrementPage={incrementPage}
+      decrementPage={decrementPage}
+      data={data}
+    />
   ) : null;
 
-  toRender = <LoadingScreen />;
-
   return toRender;
-  return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <View>{toRender}</View>
-        <PaginationButtons
-          isPrevActive={isPrevActive}
-          isNextActive={isNextActive}
-          page={page}
-          incrementPage={incrementPage}
-          decrementPage={decrementPage}
-        />
-      </ScrollView>
-    </SafeAreaView>
-  );
 };
 
 export default HomeScreen;
