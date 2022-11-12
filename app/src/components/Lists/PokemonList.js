@@ -1,9 +1,9 @@
 import { StyleSheet, StatusBar } from "react-native";
-import RenderItem from "../Cards/PokemonCard";
+import PokemonCard from "../Cards/PokemonCard";
 
-const PokemonsList = ({ data }) => {
+const PokemonsList = ({ data, navigation }) => {
   const toReturn = data.results.map((pokemon) => (
-    <RenderItem item={pokemon} key={pokemon.name} />
+    <PokemonCard item={pokemon} key={pokemon.name} navigation={navigation} />
   ));
   return toReturn;
 };

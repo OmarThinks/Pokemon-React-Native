@@ -1,11 +1,11 @@
 import { View, Text } from "react-native";
 import { StyleSheet, StatusBar } from "react-native";
-
-const PokemonCard = ({ item }) => {
+import { Card } from "react-native-paper";
+const PokemonCard = ({ item, navigation }) => {
   return (
-    <View style={styles.item}>
+    <Card style={styles.item} onPress={() => navigation.navigate("Details")}>
       <Text style={styles.title}>{item.name}</Text>
-    </View>
+    </Card>
   );
 };
 

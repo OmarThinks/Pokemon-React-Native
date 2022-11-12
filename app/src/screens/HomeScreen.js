@@ -74,13 +74,14 @@ const ListScreen = ({
   isNextActive,
   incrementPage,
   decrementPage,
+  navigation,
 }) => {
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <View>
           <View>
-            <PokemonsList data={data} />
+            <PokemonsList data={data} navigation={navigation} />
           </View>
         </View>
         <PaginationButtons
@@ -145,9 +146,10 @@ const HomeScreen = ({ navigation }) => {
       incrementPage={incrementPage}
       decrementPage={decrementPage}
       data={data}
+      navigation={navigation}
     />
   ) : null;
-
+  /*
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Text>Home Screen</Text>
@@ -158,7 +160,7 @@ const HomeScreen = ({ navigation }) => {
       />
     </View>
   );
-
+*/
   return toRender;
 };
 
