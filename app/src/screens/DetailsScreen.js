@@ -33,6 +33,18 @@ const EmptyPlaceholder = ({ placeholder }) => {
   );
 };
 
+const StringsToUnorderedList = ({ strings }) => {
+  const toRender = strings.map((item) => {
+    return (
+      <Unorderedlist style={{ ...styles.paragraph }} key={item}>
+        <Text style={{ ...styles.paragraph }}>{item}</Text>
+      </Unorderedlist>
+    );
+  });
+
+  return <View style={{ ...styles.paragraphContainer }}>{toRender}</View>;
+};
+
 const Abilities = ({ data }) => {
   const abilities = data.abilities;
   const abilitiesStrings = [];
@@ -40,20 +52,11 @@ const Abilities = ({ data }) => {
     abilitiesStrings.push(abilities[key].ability.name);
   }
 
-  let toRender;
   if (abilitiesStrings.length == 0) {
     return <EmptyPlaceholder placeholder={"abilities"} />;
   }
 
-  toRender = abilitiesStrings.map((ability) => {
-    return (
-      <Unorderedlist style={{ ...styles.paragraph }} key={ability}>
-        <Text style={{ ...styles.paragraph }}>{ability}</Text>
-      </Unorderedlist>
-    );
-  });
-
-  return <View style={{ ...styles.paragraphContainer }}>{toRender}</View>;
+  return <StringsToUnorderedList strings={abilitiesStrings} />;
 };
 
 const DisplayDetailsScreen = ({ data }) => {
