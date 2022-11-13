@@ -1,10 +1,10 @@
 import { URL, URLSearchParams } from "react-native-url-polyfill";
 
-const getPokemonIdFromURL = (url) => {
-  const url = new URL(url);
-  console.log(url.pathname.split("/"));
-  url.pop();
-  return url.pop();
+const getPokemonIdFromURL = (input_url) => {
+  const url = new URL(input_url);
+  const pathname = url.pathname.split("/");
+  pathname.pop();
+  return pathname.pop();
 };
 
 export { getPokemonIdFromURL };

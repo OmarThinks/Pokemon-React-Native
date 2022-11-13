@@ -97,8 +97,6 @@ const ListScreen = ({
 };
 
 const HomeScreen = ({ navigation }) => {
-  const [page, setPage] = useState(1);
-
   const incrementPage = () => {
     setPage(page + 1);
   };
