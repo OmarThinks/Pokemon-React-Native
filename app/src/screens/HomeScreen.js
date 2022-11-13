@@ -8,6 +8,9 @@ import { Button } from "react-native-paper";
 import PaginationButtons from "../components/PaginationButtons";
 import { getPokemonIdFromURL } from "../functions/generalFunctions";
 
+import LoadingScreen from "./CommonScreens/LoadingScreen";
+import ErrorScreen from "./CommonScreens/ErrorScreen";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -26,47 +29,6 @@ const styles = StyleSheet.create({
   },
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
-
-const ErrorScreen = ({
-  page,
-  refetch,
-  isPrevActive,
-  isNextActive,
-  incrementPage,
-  decrementPage,
-  isFetching,
-}) => {
-  return (
-    <View style={{ ...styles.centererView }}>
-      <Text style={{ padding: 20 }}>Something went wrong ...</Text>
-      <Button
-        onPress={refetch}
-        style={{ ...styles.button }}
-        disabled={isFetching}
-        loading={isFetching}
-        mode={"contained-tonal"}
-      >
-        Refresh
-      </Button>
-
-      <PaginationButtons
-        isPrevActive={isPrevActive}
-        isNextActive={isNextActive}
-        page={page}
-        incrementPage={incrementPage}
-        decrementPage={decrementPage}
-      />
-    </View>
-  );
-};
-
-const LoadingScreen = () => {
-  return (
-    <View style={{ ...styles.centererView }}>
-      <ActivityIndicator size="large" />
-    </View>
-  );
-};
 
 const ListScreen = ({
   data,
@@ -127,15 +89,7 @@ const HomeScreen = ({ navigation }) => {
   console.log(isPrevActive, isNextActive);
 
   let toRender = error ? (
-    <ErrorScreen
-      page={page}
-      isPrevActive={isPrevActive}
-      isNextActive={isNextActive}
-      incrementPage={incrementPage}
-      decrementPage={decrementPage}
-      refetch={refetch}
-      isFetching={isFetching}
-    />
+    <ErrorScreen refetch={refetch} isFetching={isFetching} />
   ) : isLoading ? (
     <LoadingScreen />
   ) : data ? (

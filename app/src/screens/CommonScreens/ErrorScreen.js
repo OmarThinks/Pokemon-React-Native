@@ -1,12 +1,6 @@
 import { View, Text } from "react-native";
-import { useGetPokemonsPaginatorQuery } from "../services/pokemon";
-import { useState } from "react";
-import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
-import PokemonsList from "../components/Lists/PokemonList";
-import { ActivityIndicator } from "react-native-paper";
+import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
-import PaginationButtons from "../components/PaginationButtons";
-import { getPokemonIdFromURL } from "../functions/generalFunctions";
 
 const styles = StyleSheet.create({
   button: {
@@ -16,11 +10,7 @@ const styles = StyleSheet.create({
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
 
-const ErrorScreen = ({
-  refetch,
-
-  isFetching,
-}) => {
+const ErrorScreen = ({ refetch, isFetching }) => {
   return (
     <View style={{ ...styles.centererView }}>
       <Text style={{ padding: 20 }}>Something went wrong ...</Text>
