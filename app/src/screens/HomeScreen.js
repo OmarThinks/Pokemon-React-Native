@@ -64,7 +64,6 @@ const ListScreen = ({
           incrementPage={incrementPage}
           decrementPage={decrementPage}
         />
-        {activityIndicator}
       </ScrollView>
     </SafeAreaView>
   );
