@@ -15,3 +15,7 @@ PokeAPI: https://pokeapi.co/
   - RTK Qeury (To send HTTP requests)
 - React Navigation
   - To switch between screens
+
+# ScreenShots:
+
+<img src="Media/ScreenShots/01.png" width="200"/>
