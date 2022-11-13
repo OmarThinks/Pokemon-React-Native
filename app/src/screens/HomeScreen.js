@@ -83,7 +83,6 @@ const HomeScreen = ({ navigation }) => {
 
   let isNextActive = false;
   let isPrevActive = false;
-  console.log(page);
 
   if (!error) {
     if (!isFetching) {
@@ -95,8 +94,6 @@ const HomeScreen = ({ navigation }) => {
       }
     }
   }
-
-  console.log(isPrevActive, isNextActive);
 
   let toRender = error ? (
     <ErrorScreen refetch={refetch} isFetching={isFetching} />

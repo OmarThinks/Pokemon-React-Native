@@ -12,6 +12,9 @@ import { useGetPokemonsByIdQuery } from "../services/pokemon";
 import { getPokemonIdFromURL } from "../functions/generalFunctions";
 import Unorderedlist from "react-native-unordered-list";
 
+import ErrorScreen from "./CommonScreens/ErrorScreen";
+import LoadingScreen from "./CommonScreens/LoadingScreen";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -36,7 +39,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   paragraph: {
-    fontSize: 20,
+    fontSize: 26,
   },
 
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
@@ -56,18 +59,12 @@ const Abilities = (data) => {
   return <Text>Ablities</Text>;
 };
 
-const DetailsScreen = ({ navigation, route }) => {
-  const { name, url } = route.params;
-  const id = getPokemonIdFromURL(url);
-  const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-
-  console.log(name);
-  console.log(url);
-  const { data, error, isFetching, refetch } = useGetPokemonsByIdQuery(id);
-  console.log(`data ${data}`);
-
+const DisplayDetailsScreen = ({ data }) => {
   let ScreenWidth = Dimensions.get("window").width;
-  console.log(ScreenWidth);
+  const id = data.id;
+  const name = data.name;
+
+  const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
   return (
     <SafeAreaView style={{ padding: 20 }}>
@@ -110,6 +107,25 @@ const DetailsScreen = ({ navigation, route }) => {
       </ScrollView>
     </SafeAreaView>
   );
+};
+
+const DetailsScreen = ({ navigation, route }) => {
+  const { url } = route.params;
+  const id = getPokemonIdFromURL(url);
+
+  const { data, error, isFetching, refetch, isLoading } =
+    useGetPokemonsByIdQuery(id);
+  console.log(`data ${data}`);
+
+  let toRender = error ? (
+    <ErrorScreen refetch={refetch} isFetching={isFetching} />
+  ) : isLoading ? (
+    <LoadingScreen />
+  ) : data ? (
+    <DisplayDetailsScreen data={data} />
+  ) : null;
+
+  return toRender;
 };
 
 export default DetailsScreen;

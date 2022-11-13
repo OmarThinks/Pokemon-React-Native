@@ -6,7 +6,6 @@ import { getPokemonIdFromURL } from "../../functions/generalFunctions";
 const PokemonCard = ({ item, navigation }) => {
   const id = getPokemonIdFromURL(item.url);
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
-  console.log(imageURL);
   return (
     <Card
       style={styles.item}
