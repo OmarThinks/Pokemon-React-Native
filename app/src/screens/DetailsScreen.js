@@ -10,6 +10,8 @@ import {
 } from "react-native";
 import { useGetPokemonsByIdQuery } from "../services/pokemon";
 import { getPokemonIdFromURL } from "../functions/generalFunctions";
+import Unorderedlist from "react-native-unordered-list";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -90,7 +92,9 @@ const DetailsScreen = ({ navigation, route }) => {
           <View>
             <Text style={{ fontSize: 40 }}>Name:</Text>
             <View style={{ ...styles.paragraphContainer }}>
-              <Text style={{ fontSize: 20 }}>{name}</Text>
+              <Unorderedlist style={{ fontSize: 20 }}>
+                <Text style={{ fontSize: 20 }}>{name}</Text>
+              </Unorderedlist>
             </View>
           </View>
         </View>
