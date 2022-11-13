@@ -21,6 +21,9 @@ moves (V)
 name (V)
 stats (V)
 types (V)
+weight (V)
+held_items
+
 */
 
 const EmptyPlaceholder = ({ placeholder }) => {
@@ -127,6 +130,13 @@ const DisplayDetailsScreen = ({ data }) => {
             <View style={{ ...styles.paragraphContainer }}>
               <Unorderedlist style={{ ...styles.paragraph }}>
                 <Text style={{ ...styles.paragraph }}>{name}</Text>
+              </Unorderedlist>
+            </View>
+
+            <Text style={{ ...styles.title }}>Weight:</Text>
+            <View style={{ ...styles.paragraphContainer }}>
+              <Unorderedlist style={{ ...styles.paragraph }}>
+                <Text style={{ ...styles.paragraph }}>{data.weight}</Text>
               </Unorderedlist>
             </View>
 
