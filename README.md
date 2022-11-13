@@ -2,6 +2,15 @@
 
 Creating a Pokemon React native app using pokemon API
 
+# How to run:
+
+```
+git clone https://github.com/OmarThinks/Pokemon-React-Native
+cd Pokemon-React-Native/app
+npm install
+npm run android
+```
+
 # Youtube Video:
 
 https://www.youtube.com/watch?v=Q28u7k45Gl4
