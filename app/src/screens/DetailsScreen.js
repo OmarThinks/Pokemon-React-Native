@@ -15,38 +15,6 @@ import Unorderedlist from "react-native-unordered-list";
 import ErrorScreen from "./CommonScreens/ErrorScreen";
 import LoadingScreen from "./CommonScreens/LoadingScreen";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  buttonsContainer: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  button: {
-    width: "35%",
-    padding: 5,
-  },
-  title: {
-    fontSize: 40,
-    paddingTop: 30,
-  },
-  paragraphContainer: {
-    paddingLeft: 15,
-  },
-  paragraph: {
-    fontSize: 26,
-  },
-
-  centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
-
-  mainImage: { width: "100%", height: 300 },
-});
-
 /*
 abilities
 moves
@@ -55,7 +23,15 @@ stats
 types
 */
 
-const Abilities = (data) => {
+const Abilities = ({ data }) => {
+  const abilities = data.abilities;
+  const abilitiesStrings = [];
+  for (const key in abilities) {
+    abilitiesStrings.push(abilities[key].ability.name);
+  }
+
+  console.log("abilities");
+  console.log(abilitiesStrings);
   return <Text>Ablities</Text>;
 };
 
@@ -127,5 +103,37 @@ const DetailsScreen = ({ navigation, route }) => {
 
   return toRender;
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+  buttonsContainer: {
+    display: "flex",
+    width: "100%",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    padding: 20,
+  },
+  button: {
+    width: "35%",
+    padding: 5,
+  },
+  title: {
+    fontSize: 40,
+    paddingTop: 30,
+  },
+  paragraphContainer: {
+    paddingLeft: 15,
+  },
+  paragraph: {
+    fontSize: 26,
+  },
+
+  centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
+
+  mainImage: { width: "100%", height: 300 },
+});
 
 export default DetailsScreen;
