@@ -22,7 +22,7 @@ name (V)
 stats (V)
 types (V)
 weight (V)
-held_items
+held_items (V)
 
 */
 
@@ -106,6 +106,21 @@ const Types = ({ data }) => {
   return <StringsToUnorderedList strings={typesStrings} />;
 };
 
+const HeldItems = ({ data }) => {
+  const held_items = data.held_items;
+  const held_itemsStrings = [];
+  for (const key in held_items) {
+    held_itemsStrings.push(`${held_items[key].item.name}`);
+  }
+  console.log(held_itemsStrings);
+
+  if (held_itemsStrings.length == 0) {
+    return <EmptyPlaceholder placeholder={"held items"} />;
+  }
+
+  return <StringsToUnorderedList strings={held_itemsStrings} />;
+};
+
 const DisplayDetailsScreen = ({ data }) => {
   let ScreenWidth = Dimensions.get("window").width;
   const id = data.id;
@@ -154,6 +169,9 @@ const DisplayDetailsScreen = ({ data }) => {
 
             <Text style={{ ...styles.title }}>Types:</Text>
             <Types data={data} />
+
+            <Text style={{ ...styles.title }}>Held Items:</Text>
+            <HeldItems data={data} />
           </View>
         </View>
       </ScrollView>
