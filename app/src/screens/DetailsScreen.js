@@ -29,11 +29,14 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   title: {
-    fontSize: 32,
-    padding: 20,
+    fontSize: 40,
+    paddingTop: 30,
   },
   paragraphContainer: {
     paddingLeft: 15,
+  },
+  paragraph: {
+    fontSize: 20,
   },
 
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
@@ -44,11 +47,14 @@ const styles = StyleSheet.create({
 /*
 abilities
 moves
-name
+name (V)
 stats
 types
-
 */
+
+const Abilities = (data) => {
+  return <Text>Ablities</Text>;
+};
 
 const DetailsScreen = ({ navigation, route }) => {
   const { name, url } = route.params;
@@ -90,12 +96,15 @@ const DetailsScreen = ({ navigation, route }) => {
           </View>
 
           <View>
-            <Text style={{ fontSize: 40 }}>Name:</Text>
+            <Text style={{ ...styles.title }}>Name:</Text>
             <View style={{ ...styles.paragraphContainer }}>
-              <Unorderedlist style={{ fontSize: 20 }}>
-                <Text style={{ fontSize: 20 }}>{name}</Text>
+              <Unorderedlist style={{ ...styles.paragraph }}>
+                <Text style={{ ...styles.paragraph }}>{name}</Text>
               </Unorderedlist>
             </View>
+
+            <Text style={{ ...styles.title }}>Abilities:</Text>
+            <Abilities data={data} />
           </View>
         </View>
       </ScrollView>
