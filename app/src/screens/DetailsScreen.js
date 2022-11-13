@@ -17,9 +17,9 @@ import LoadingScreen from "./CommonScreens/LoadingScreen";
 
 /*
 abilities (V)
-moves (...)
+moves (V)
 name (V)
-stats
+stats (...)
 types
 */
 
@@ -73,6 +73,21 @@ const Moves = ({ data }) => {
   return <StringsToUnorderedList strings={movesStrings} />;
 };
 
+const Stats = ({ data }) => {
+  const stats = data.stats;
+  const statsStrings = [];
+  for (const key in stats) {
+    const base_stat = stats[key].base_stat;
+    statsStrings.push(`${stats[key].stat.name}: ${base_stat}`);
+  }
+
+  if (statsStrings.length == 0) {
+    return <EmptyPlaceholder placeholder={"stats"} />;
+  }
+
+  return <StringsToUnorderedList strings={statsStrings} />;
+};
+
 const DisplayDetailsScreen = ({ data }) => {
   let ScreenWidth = Dimensions.get("window").width;
   const id = data.id;
@@ -105,6 +120,9 @@ const DisplayDetailsScreen = ({ data }) => {
 
             <Text style={{ ...styles.title }}>Moves:</Text>
             <Moves data={data} />
+
+            <Text style={{ ...styles.title }}>Stats:</Text>
+            <Stats data={data} />
           </View>
         </View>
       </ScrollView>
