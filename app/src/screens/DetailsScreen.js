@@ -30,9 +30,21 @@ const Abilities = ({ data }) => {
     abilitiesStrings.push(abilities[key].ability.name);
   }
 
-  console.log("abilities");
-  console.log(abilitiesStrings);
-  return <Text>Ablities</Text>;
+  let toRender;
+  if (abilitiesStrings.length == 0) {
+    toRender = (
+      <Text style={{ ...styles.paragraph }}>This pokemon has no abilities</Text>
+    );
+  } else {
+    toRender = abilitiesStrings.map((ability) => {
+      return (
+        <Unorderedlist style={{ ...styles.paragraph }} key={ability}>
+          <Text style={{ ...styles.paragraph }}>{ability}</Text>
+        </Unorderedlist>
+      );
+    });
+  }
+  return <View style={{ ...styles.paragraphContainer }}>{toRender}</View>;
 };
 
 const DisplayDetailsScreen = ({ data }) => {
