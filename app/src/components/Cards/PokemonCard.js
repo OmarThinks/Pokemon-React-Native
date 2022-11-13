@@ -1,8 +1,12 @@
 import { View, Text } from "react-native";
 import { StyleSheet, StatusBar } from "react-native";
 import { Avatar, Card, IconButton } from "react-native-paper";
+import { getPokemonIdFromURL } from "../../functions/generalFunctions";
 
 const PokemonCard = ({ item, navigation }) => {
+  const id = getPokemonIdFromURL(item.url);
+  const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
+  console.log(imageURL);
   return (
     <Card
       style={styles.item}
@@ -11,7 +15,11 @@ const PokemonCard = ({ item, navigation }) => {
       <View
         style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
       >
-        <Avatar.Icon icon="folder" />
+        <Avatar.Image
+          source={{ uri: imageURL }}
+          style={{ backgroundColor: "transparent" }}
+        />
+
         <Text style={styles.title}>{item.name}</Text>
       </View>
     </Card>
