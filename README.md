@@ -2,6 +2,10 @@
 
 Creating a Pokemon React native app using pokemon API
 
+# Youtube Video:
+
+https://www.youtube.com/watch?v=Q28u7k45Gl4
+
 # Backend API:
 
 PokeAPI: https://pokeapi.co/
