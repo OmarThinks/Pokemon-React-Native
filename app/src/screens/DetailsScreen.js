@@ -17,7 +17,7 @@ import LoadingScreen from "./CommonScreens/LoadingScreen";
 
 /*
 abilities (V)
-moves
+moves (...)
 name (V)
 stats
 types
@@ -59,6 +59,20 @@ const Abilities = ({ data }) => {
   return <StringsToUnorderedList strings={abilitiesStrings} />;
 };
 
+const Moves = ({ data }) => {
+  const moves = data.moves;
+  const movesStrings = [];
+  for (const key in moves) {
+    movesStrings.push(moves[key].move.name);
+  }
+
+  if (movesStrings.length == 0) {
+    return <EmptyPlaceholder placeholder={"moves"} />;
+  }
+
+  return <StringsToUnorderedList strings={movesStrings} />;
+};
+
 const DisplayDetailsScreen = ({ data }) => {
   let ScreenWidth = Dimensions.get("window").width;
   const id = data.id;
@@ -67,30 +81,16 @@ const DisplayDetailsScreen = ({ data }) => {
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
   return (
-    <SafeAreaView style={{ padding: 20 }}>
-      <ScrollView
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-        }}
-      >
-        <View
-          style={{
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
-          <View>
-            <Image
-              style={{ ...styles.mainImage, width: ScreenWidth - 40 }}
-              source={{
-                uri: imageURL,
-              }}
-              resizeMode={"contain"}
-              resizeMethod={"auto"}
-            />
-          </View>
+    <SafeAreaView>
+      <ScrollView style={{ padding: 30 }}>
+        <View>
+          <Image
+            style={{ ...styles.mainImage, width: ScreenWidth - 60 }}
+            source={{
+              uri: imageURL,
+            }}
+            resizeMode={"contain"}
+          />
 
           <View>
             <Text style={{ ...styles.title }}>Name:</Text>
@@ -102,6 +102,9 @@ const DisplayDetailsScreen = ({ data }) => {
 
             <Text style={{ ...styles.title }}>Abilities:</Text>
             <Abilities data={data} />
+
+            <Text style={{ ...styles.title }}>Moves:</Text>
+            <Moves data={data} />
           </View>
         </View>
       </ScrollView>
@@ -152,7 +155,7 @@ const styles = StyleSheet.create({
     paddingLeft: 15,
   },
   paragraph: {
-    fontSize: 26,
+    fontSize: 24,
   },
 
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
