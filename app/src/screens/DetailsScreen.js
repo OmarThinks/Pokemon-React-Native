@@ -30,6 +30,9 @@ const styles = StyleSheet.create({
     fontSize: 32,
     padding: 20,
   },
+  paragraphContainer: {
+    paddingLeft: 15,
+  },
 
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 
@@ -83,12 +86,13 @@ const DetailsScreen = ({ navigation, route }) => {
               resizeMethod={"auto"}
             />
           </View>
-          <Text style={{ ...styles.title }}>Name:</Text>
 
-          <Text>{name}</Text>
-          <Text style={{ ...styles.title }}>Name:</Text>
-
-          <Text>{name}</Text>
+          <View>
+            <Text style={{ fontSize: 40 }}>Name:</Text>
+            <View style={{ ...styles.paragraphContainer }}>
+              <Text style={{ fontSize: 20 }}>{name}</Text>
+            </View>
+          </View>
         </View>
       </ScrollView>
     </SafeAreaView>
