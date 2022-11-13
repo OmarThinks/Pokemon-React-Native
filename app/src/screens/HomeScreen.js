@@ -106,7 +106,7 @@ const HomeScreen = ({ navigation }) => {
     setPage(page - 1);
   };
 
-  const { data, error, isFetching, refetch } =
+  const { data, error, isFetching, refetch, isLoading } =
     useGetPokemonsPaginatorQuery(page);
 
   let isNextActive = false;
@@ -136,7 +136,7 @@ const HomeScreen = ({ navigation }) => {
       refetch={refetch}
       isFetching={isFetching}
     />
-  ) : isFetching ? (
+  ) : isLoading ? (
     <LoadingScreen />
   ) : data ? (
     <ListScreen
