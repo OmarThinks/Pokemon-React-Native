@@ -6,6 +6,7 @@ import PokemonsList from "../components/Lists/PokemonList";
 import { ActivityIndicator } from "react-native-paper";
 import { Button } from "react-native-paper";
 import PaginationButtons from "../components/PaginationButtons";
+import { getPokemonIdFromURL } from "../functions/generalFunctions";
 
 const styles = StyleSheet.create({
   container: {
@@ -97,6 +98,7 @@ const ListScreen = ({
 };
 
 const HomeScreen = ({ navigation }) => {
+  const [page, setPage] = useState(1);
   const incrementPage = () => {
     setPage(page + 1);
   };
