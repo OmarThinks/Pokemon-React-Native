@@ -19,3 +19,8 @@ PokeAPI: https://pokeapi.co/
 # ScreenShots:
 
 <img src="Media/ScreenShots/01.png" width="200"/>
+<img src="Media/ScreenShots/02.png" width="200"/>
+<img src="Media/ScreenShots/03.png" width="200"/>
+<img src="Media/ScreenShots/04.png" width="200"/>
+<img src="Media/ScreenShots/05.png" width="200"/>
+<img src="Media/ScreenShots/06.png" width="200"/>
