@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
   button: {
     width: "35%",
     padding: 5,
-    backgroundColor: "#f9c2ff",
   },
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });

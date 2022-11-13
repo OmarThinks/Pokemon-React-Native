@@ -23,7 +23,6 @@ const styles = StyleSheet.create({
   button: {
     width: "35%",
     padding: 5,
-    backgroundColor: "#f9c2ff",
   },
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
@@ -45,6 +44,7 @@ const ErrorScreen = ({
         style={{ ...styles.button }}
         disabled={isFetching}
         loading={isFetching}
+        mode={"contained-tonal"}
       >
         Refresh
       </Button>
@@ -149,18 +149,7 @@ const HomeScreen = ({ navigation }) => {
       navigation={navigation}
     />
   ) : null;
-  /*
-  return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Details")}
-        style={{ backgroundColor: "red" }}
-      />
-    </View>
-  );
-*/
+
   return toRender;
 };
 

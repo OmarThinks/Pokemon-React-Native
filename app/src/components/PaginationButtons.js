@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
   paginationButton: {
     width: "35%",
     padding: 5,
-    backgroundColor: "#f9c2ff",
   },
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 });
@@ -44,6 +43,7 @@ const PaginationButtons = ({
         }}
         onPress={decrementPage}
         disabled={!isPrevActive}
+        mode={"contained-tonal"}
       >
         Previous
       </Button>
@@ -58,6 +58,7 @@ const PaginationButtons = ({
         }}
         onPress={incrementPage}
         disabled={!isNextActive}
+        mode={"contained-tonal"}
       >
         Next
       </Button>
