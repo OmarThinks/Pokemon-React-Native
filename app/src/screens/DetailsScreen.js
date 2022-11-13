@@ -19,8 +19,8 @@ import LoadingScreen from "./CommonScreens/LoadingScreen";
 abilities (V)
 moves (V)
 name (V)
-stats (...)
-types
+stats (V)
+types (V)
 */
 
 const EmptyPlaceholder = ({ placeholder }) => {
@@ -88,6 +88,21 @@ const Stats = ({ data }) => {
   return <StringsToUnorderedList strings={statsStrings} />;
 };
 
+const Types = ({ data }) => {
+  const types = data.types;
+  const typesStrings = [];
+  for (const key in types) {
+    typesStrings.push(`${types[key].type.name}`);
+  }
+  console.log(typesStrings);
+
+  if (typesStrings.length == 0) {
+    return <EmptyPlaceholder placeholder={"types"} />;
+  }
+
+  return <StringsToUnorderedList strings={typesStrings} />;
+};
+
 const DisplayDetailsScreen = ({ data }) => {
   let ScreenWidth = Dimensions.get("window").width;
   const id = data.id;
@@ -97,8 +112,8 @@ const DisplayDetailsScreen = ({ data }) => {
 
   return (
     <SafeAreaView>
-      <ScrollView style={{ padding: 30 }}>
-        <View>
+      <ScrollView>
+        <View style={{ padding: 30 }}>
           <Image
             style={{ ...styles.mainImage, width: ScreenWidth - 60 }}
             source={{
@@ -123,6 +138,12 @@ const DisplayDetailsScreen = ({ data }) => {
 
             <Text style={{ ...styles.title }}>Stats:</Text>
             <Stats data={data} />
+
+            <Text style={{ ...styles.title }}>Types:</Text>
+            <Types data={data} />
+
+            <Text style={{ ...styles.title }}>Types:</Text>
+            <Types data={data} />
           </View>
         </View>
       </ScrollView>
@@ -150,21 +171,6 @@ const DetailsScreen = ({ navigation, route }) => {
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
-  },
-  buttonsContainer: {
-    display: "flex",
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-between",
-    padding: 20,
-  },
-  button: {
-    width: "35%",
-    padding: 5,
-  },
   title: {
     fontSize: 40,
     paddingTop: 30,
@@ -175,8 +181,6 @@ const styles = StyleSheet.create({
   paragraph: {
     fontSize: 24,
   },
-
-  centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
 
   mainImage: { width: "100%", height: 300 },
 });
