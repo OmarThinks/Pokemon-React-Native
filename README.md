@@ -12,7 +12,7 @@ PokeAPI: https://pokeapi.co/
 - React Native, React Native Paper
   - To create the android app
 - RTK (Redux Toolkit)
-  - RTK Qeury (To send HTTP requests)
+  - RTK Qeury (To send HTTP requests, and store, and cache data in redux store at once)
 - React Navigation
   - To switch between screens
 
