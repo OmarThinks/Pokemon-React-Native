@@ -38,7 +38,16 @@ const ListScreen = ({
   incrementPage,
   decrementPage,
   navigation,
+  isFetching,
 }) => {
+  const activityIndicator = isFetching ? (
+    <View style={{ ...styles.centererView }}>
+      <ActivityIndicator size={"large"} />
+    </View>
+  ) : (
+    <></>
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -47,6 +56,7 @@ const ListScreen = ({
             <PokemonsList data={data} navigation={navigation} />
           </View>
         </View>
+
         <PaginationButtons
           isPrevActive={isPrevActive}
           isNextActive={isNextActive}
@@ -54,6 +64,7 @@ const ListScreen = ({
           incrementPage={incrementPage}
           decrementPage={decrementPage}
         />
+        {activityIndicator}
       </ScrollView>
     </SafeAreaView>
   );
@@ -101,6 +112,7 @@ const HomeScreen = ({ navigation }) => {
       decrementPage={decrementPage}
       data={data}
       navigation={navigation}
+      isFetching={isFetching}
     />
   ) : null;
 
