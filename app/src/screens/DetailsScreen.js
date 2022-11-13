@@ -16,12 +16,22 @@ import ErrorScreen from "./CommonScreens/ErrorScreen";
 import LoadingScreen from "./CommonScreens/LoadingScreen";
 
 /*
-abilities
+abilities (V)
 moves
 name (V)
 stats
 types
 */
+
+const EmptyPlaceholder = ({ placeholder }) => {
+  return (
+    <View style={{ ...styles.paragraphContainer }}>
+      <Text style={{ ...styles.paragraph }}>
+        This pokemon has no {placeholder}
+      </Text>
+    </View>
+  );
+};
 
 const Abilities = ({ data }) => {
   const abilities = data.abilities;
@@ -32,18 +42,17 @@ const Abilities = ({ data }) => {
 
   let toRender;
   if (abilitiesStrings.length == 0) {
-    toRender = (
-      <Text style={{ ...styles.paragraph }}>This pokemon has no abilities</Text>
-    );
-  } else {
-    toRender = abilitiesStrings.map((ability) => {
-      return (
-        <Unorderedlist style={{ ...styles.paragraph }} key={ability}>
-          <Text style={{ ...styles.paragraph }}>{ability}</Text>
-        </Unorderedlist>
-      );
-    });
+    return <EmptyPlaceholder placeholder={"abilities"} />;
   }
+
+  toRender = abilitiesStrings.map((ability) => {
+    return (
+      <Unorderedlist style={{ ...styles.paragraph }} key={ability}>
+        <Text style={{ ...styles.paragraph }}>{ability}</Text>
+      </Unorderedlist>
+    );
+  });
+
   return <View style={{ ...styles.paragraphContainer }}>{toRender}</View>;
 };
 
