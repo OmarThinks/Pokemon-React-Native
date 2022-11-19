@@ -128,6 +128,8 @@ const DisplayDetailsScreen = ({ data }) => {
 
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
+  const imageURL2 = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${id}.svg`;
+
   return (
     <SafeAreaView>
       <ScrollView>
