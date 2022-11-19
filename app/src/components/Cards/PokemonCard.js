@@ -2,8 +2,11 @@ import { View, Text } from "react-native";
 import { StyleSheet, StatusBar } from "react-native";
 import { Avatar, Card, IconButton } from "react-native-paper";
 import { getPokemonIdFromURL } from "../../functions/generalFunctions";
+import { useNavigation } from "@react-navigation/native";
 
-const PokemonCard = ({ item, navigation }) => {
+const PokemonCard = ({ item }) => {
+  const navigation = useNavigation();
+
   const id = getPokemonIdFromURL(item.url);
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
   return (
