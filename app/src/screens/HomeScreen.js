@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
-import { useGetPokemonsPaginatorQuery } from "../services/pokemon";
-import { useState } from "react";
+import { useGetPokemonsPaginatorQuery, usePrefetch } from "../services/pokemon";
+import { useState, useCallback } from "react";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import PokemonsList from "../components/Lists/PokemonList";
 import { ActivityIndicator } from "react-native-paper";
@@ -80,6 +80,12 @@ const HomeScreen = () => {
   const { data, error, isFetching, refetch, isLoading } =
     useGetPokemonsPaginatorQuery(page);
 
+  const prefetchPage = usePrefetch("getPokemonsPaginator");
+
+  const prefetchNext = useCallback(() => {
+    prefetchPage(page + 1);
+  }, [prefetchPage, page]);
+
   let isNextActive = false;
   let isPrevActive = false;
 
@@ -87,6 +93,7 @@ const HomeScreen = () => {
     if (!isFetching) {
       if (data.next != null) {
         isNextActive = true;
+        prefetchNext();
       }
       if (data.previous != null) {
         isPrevActive = true;
