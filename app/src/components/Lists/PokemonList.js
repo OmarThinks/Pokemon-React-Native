@@ -1,7 +1,7 @@
-import { StyleSheet, StatusBar, FlatList } from "react-native";
+import { StyleSheet, StatusBar, FlatList, Text } from "react-native";
 import PokemonCard from "../Cards/PokemonCard";
 
-const PokemonsList = ({ data, navigation }) => {
+const PokemonsList = ({ data, navigation, bottomPagination }) => {
   const toReturn = data.results.map((pokemon) => (
     <PokemonCard item={pokemon} key={pokemon.name} navigation={navigation} />
   ));
@@ -15,6 +15,7 @@ const PokemonsList = ({ data, navigation }) => {
       data={data.results}
       renderItem={renderItem}
       keyExtractor={(pokemon) => pokemon.name}
+      ListFooterComponent={bottomPagination}
     />
   );
   console.log(data);

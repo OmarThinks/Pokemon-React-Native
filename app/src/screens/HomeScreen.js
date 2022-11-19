@@ -48,23 +48,27 @@ const ListScreen = ({
     <></>
   );
 
+  const bottomPagination = (
+    <PaginationButtons
+      isPrevActive={isPrevActive}
+      isNextActive={isNextActive}
+      page={page}
+      incrementPage={incrementPage}
+      decrementPage={decrementPage}
+    />
+  );
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <View>
         <View>
-          <View>
-            <PokemonsList data={data} navigation={navigation} />
-          </View>
+          <PokemonsList
+            data={data}
+            navigation={navigation}
+            bottomPagination={bottomPagination}
+          />
         </View>
-
-        <PaginationButtons
-          isPrevActive={isPrevActive}
-          isNextActive={isNextActive}
-          page={page}
-          incrementPage={incrementPage}
-          decrementPage={decrementPage}
-        />
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };
