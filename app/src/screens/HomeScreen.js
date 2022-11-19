@@ -1,6 +1,6 @@
 import { View, Text } from "react-native";
 import { useGetPokemonsPaginatorQuery, usePrefetch } from "../services/pokemon";
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import PokemonsList from "../components/Lists/PokemonList";
 import { ActivityIndicator } from "react-native-paper";
@@ -93,13 +93,18 @@ const HomeScreen = () => {
     if (!isFetching) {
       if (data.next != null) {
         isNextActive = true;
-        prefetchNext();
       }
       if (data.previous != null) {
         isPrevActive = true;
       }
     }
   }
+
+  useEffect(() => {
+    if (isNextActive) {
+      prefetchNext();
+    }
+  });
 
   let toRender = error ? (
     <ErrorScreen refetch={refetch} isFetching={isFetching} />
