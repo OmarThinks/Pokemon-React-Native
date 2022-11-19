@@ -11,8 +11,8 @@ export const store = configureStore({
   // and other useful features of `rtk-query`.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      immutableCheck: { warnAfter: 128 },
-      serializableCheck: { warnAfter: 128 },
+      immutableCheck: { warnAfter: 200 },
+      serializableCheck: { warnAfter: 200 },
     }).concat(pokemonApi.middleware),
 });
 
