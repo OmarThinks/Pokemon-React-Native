@@ -167,9 +167,6 @@ const DisplayDetailsScreen = ({ data }) => {
             <Text style={{ ...styles.title }}>Types:</Text>
             <Types data={data} />
 
-            <Text style={{ ...styles.title }}>Types:</Text>
-            <Types data={data} />
-
             <Text style={{ ...styles.title }}>Held Items:</Text>
             <HeldItems data={data} />
           </View>
