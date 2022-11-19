@@ -176,7 +176,7 @@ const DisplayDetailsScreen = ({ data }) => {
   );
 };
 
-const DetailsScreen = ({ navigation, route }) => {
+const DetailsScreen = ({ route }) => {
   const { url } = route.params;
   const id = getPokemonIdFromURL(url);
 

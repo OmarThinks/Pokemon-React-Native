@@ -37,7 +37,6 @@ const ListScreen = ({
   isNextActive,
   incrementPage,
   decrementPage,
-  navigation,
   isFetching,
 }) => {
   const activityIndicator = isFetching ? (
@@ -62,18 +61,14 @@ const ListScreen = ({
     <SafeAreaView style={styles.container}>
       <View>
         <View>
-          <PokemonsList
-            data={data}
-            navigation={navigation}
-            bottomPagination={bottomPagination}
-          />
+          <PokemonsList data={data} bottomPagination={bottomPagination} />
         </View>
       </View>
     </SafeAreaView>
   );
 };
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = () => {
   const [page, setPage] = useState(1);
   const incrementPage = () => {
     setPage(page + 1);
@@ -111,7 +106,6 @@ const HomeScreen = ({ navigation }) => {
       incrementPage={incrementPage}
       decrementPage={decrementPage}
       data={data}
-      navigation={navigation}
       isFetching={isFetching}
     />
   ) : null;
