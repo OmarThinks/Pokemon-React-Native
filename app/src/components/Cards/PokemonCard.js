@@ -42,6 +42,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     padding: 20,
+    color:colors.primaryTextColor
   },
 });
 

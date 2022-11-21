@@ -201,12 +201,14 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 40,
     paddingTop: 30,
+    color: colors.primaryTextColor,
   },
   paragraphContainer: {
     paddingLeft: 15,
   },
   paragraph: {
     fontSize: 24,
+    color: colors.secondaryTextColor,
   },
 
   mainImage: { width: "100%", height: 300 },

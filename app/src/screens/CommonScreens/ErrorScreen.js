@@ -19,13 +19,16 @@ const styles = StyleSheet.create({
 const ErrorScreen = ({ refetch, isFetching }) => {
   return (
     <View style={{ ...styles.centererView }}>
-      <Text style={{ padding: 20 }}>Something went wrong ...</Text>
+      <Text style={{ padding: 20, color: colors.primaryTextColor }}>
+        Something went wrong ...
+      </Text>
       <Button
         onPress={refetch}
         style={{ ...styles.button }}
         disabled={isFetching}
         loading={isFetching}
         mode={"contained-tonal"}
+        textColor={colors.primaryTextColor}
       >
         Refresh
       </Button>

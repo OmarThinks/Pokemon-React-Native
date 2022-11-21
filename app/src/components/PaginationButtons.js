@@ -5,6 +5,7 @@ import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import PokemonsList from "../components/Lists/PokemonList";
 import { ActivityIndicator } from "react-native-paper";
 import { Button } from "react-native-paper";
+import colors from "../app/colors";
 
 const styles = StyleSheet.create({
   buttonsContainer: {
@@ -16,9 +17,11 @@ const styles = StyleSheet.create({
   },
   paginationButton: {
     width: "35%",
-    padding: 5,
+    backgroundColor: colors.backGroundSurface,
   },
+
   centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
+  text: { color: colors.primaryTextColor, padding: 5 },
 });
 
 const getPaginationButtonOpacity = (isActive) => {
@@ -44,12 +47,14 @@ const PaginationButtons = ({
         onPress={decrementPage}
         disabled={!isPrevActive}
         mode={"contained-tonal"}
+        textColor={styles.text.color}
+        contentStyle={{ ...styles.text }}
       >
         Previous
       </Button>
 
       <View style={{ ...styles.centererView }}>
-        <Text>Page: {page}</Text>
+        <Text style={{ ...styles.text }}>Page: {page}</Text>
       </View>
       <Button
         style={{
@@ -59,6 +64,8 @@ const PaginationButtons = ({
         onPress={incrementPage}
         disabled={!isNextActive}
         mode={"contained-tonal"}
+        textColor={styles.text.color}
+        contentStyle={{ ...styles.text }}
       >
         Next
       </Button>
