@@ -145,17 +145,21 @@ const RecentsRoute = () => (
   </View>
 );
 
+const f1 = () => (
+  <Text style={{ fontSize: 18, backgroundColor: "magenta" }}>hiii</Text>
+);
+
 const HomeScreen = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {
       key: "music",
-      title: "Favorites",
-      focusedIcon: "heart",
-      unfocusedIcon: "heart-outline",
+      focusedIcon: f1,
+      unfocusedIcon: f1,
+      badge: false,
     },
-    { key: "albums", title: "Albums", focusedIcon: "album" },
-    { key: "recents", title: "Recents", focusedIcon: "history" },
+    { key: "albums", focusedIcon: "album" },
+    { key: "recents", focusedIcon: "history" },
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
@@ -165,12 +169,37 @@ const HomeScreen = () => {
   });
 
   return (
+    <View
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <View style={{ flex: 1 }}>
+        <PokemonListRoute />
+      </View>
+      <View style={{}}>
+        <Text>Hey</Text>
+        <Text>Hey</Text>
+        <Text>Hey</Text>
+      </View>
+    </View>
+  );
+
+  /*
     <BottomNavigation
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
+      style={{ backgroundColor: "red" }}
+      barStyle={{ backgroundColor: colors.backGroundSurface, color: "green" }}
+      theme={{ colors: { primary: "red", surface: "blue" } }}
+      activeColor={"blue"}
+      inactiveColor={"blue"}
     />
-  );
+*/
 };
 
 export default HomeScreen;
