@@ -12,6 +12,9 @@ import LoadingScreen from "./CommonScreens/LoadingScreen";
 import ErrorScreen from "./CommonScreens/ErrorScreen";
 import colors from "../app/colors";
 
+import * as React from "react";
+import { BottomNavigation } from "react-native-paper";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -72,7 +75,7 @@ const ListScreen = ({
   );
 };
 
-const HomeScreen = () => {
+const PokemonListRoute = () => {
   const [page, setPage] = useState(1);
   const incrementPage = () => {
     setPage(page + 1);
@@ -128,6 +131,46 @@ const HomeScreen = () => {
   ) : null;
 
   return toRender;
+};
+
+const AlbumsRoute = () => (
+  <View style={{ ...styles.centererView }}>
+    <Text>Albums</Text>
+  </View>
+);
+
+const RecentsRoute = () => (
+  <View style={{ ...styles.centererView }}>
+    <Text>Recents</Text>
+  </View>
+);
+
+const HomeScreen = () => {
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    {
+      key: "music",
+      title: "Favorites",
+      focusedIcon: "heart",
+      unfocusedIcon: "heart-outline",
+    },
+    { key: "albums", title: "Albums", focusedIcon: "album" },
+    { key: "recents", title: "Recents", focusedIcon: "history" },
+  ]);
+
+  const renderScene = BottomNavigation.SceneMap({
+    music: PokemonListRoute,
+    albums: AlbumsRoute,
+    recents: RecentsRoute,
+  });
+
+  return (
+    <BottomNavigation
+      navigationState={{ index, routes }}
+      onIndexChange={setIndex}
+      renderScene={renderScene}
+    />
+  );
 };
 
 export default HomeScreen;
