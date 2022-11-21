@@ -6,7 +6,7 @@ const PokemonsList = ({ data, bottomPagination, isFetching, refetch }) => {
   const renderItem = ({ item }) => <PokemonCard item={item} key={item.name} />;
 
   const headerComponent = (
-    <View style={{ marginHorizontal: 16 }}>
+    <View style={{ marginHorizontal: 24 }}>
       <Text>Pokemons List</Text>
       <Text>Paginated list of all pokemons</Text>
     </View>

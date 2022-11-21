@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { StyleSheet, StatusBar } from "react-native";
 import { Avatar, Card, IconButton } from "react-native-paper";
 import { getPokemonIdFromURL } from "../../functions/generalFunctions";
@@ -22,7 +22,7 @@ const PokemonCard = ({ item }) => {
       >
         <Avatar.Image
           style={{ backgroundColor: "transparent" }}
-          size={60}
+          size={56}
           source={{ uri: imageURL }}
         />
 
@@ -34,15 +34,17 @@ const PokemonCard = ({ item }) => {
 
 const styles = StyleSheet.create({
   item: {
-    padding: 20,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
     marginVertical: 8,
-    marginHorizontal: 16,
+    marginHorizontal: 22,
     backgroundColor: colors.backGroundSurface,
+    borderRadius: 16,
   },
   title: {
     fontSize: 32,
-    padding: 20,
-    color:colors.primaryTextColor
+    paddingHorizontal: 10,
+    color: colors.primaryTextColor,
   },
 });
 

@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    padding: 20,
+    paddingHorizontal: 24,
+    paddingVertical: 18,
   },
   paginationButton: {
     width: "35%",
@@ -67,7 +68,7 @@ const PaginationButtons = ({
         textColor={styles.text.color}
         contentStyle={{ ...styles.text }}
       >
-        Next
+        <Text>Next</Text>
       </Button>
     </View>
   );
