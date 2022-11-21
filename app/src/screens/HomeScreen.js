@@ -145,9 +145,7 @@ const RecentsRoute = () => (
   </View>
 );
 
-const f1 = () => (
-  <Text style={{ fontSize: 18, backgroundColor: "magenta" }}>hiii</Text>
-);
+const f1 = () => <Text>hiii</Text>;
 
 const HomeScreen = () => {
   const [index, setIndex] = React.useState(0);
@@ -157,6 +155,7 @@ const HomeScreen = () => {
       focusedIcon: f1,
       unfocusedIcon: f1,
       badge: false,
+      title: "Hey",
     },
     { key: "albums", focusedIcon: "album" },
     { key: "recents", focusedIcon: "history" },
@@ -173,11 +172,7 @@ const HomeScreen = () => {
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
       renderScene={renderScene}
-      style={{ backgroundColor: "red" }}
-      barStyle={{ backgroundColor: colors.backGroundSurface, color: "green" }}
-      theme={{ colors: { primary: "red", surface: "blue" } }}
-      activeColor={"blue"}
-      inactiveColor={"blue"}
+      barStyle={{ backgroundColor: colors.backGroundSurface }}
     />
   );
 };
