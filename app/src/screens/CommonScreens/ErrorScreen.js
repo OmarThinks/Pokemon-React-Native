@@ -1,13 +1,19 @@
 import { View, Text } from "react-native";
 import { StyleSheet } from "react-native";
 import { Button } from "react-native-paper";
+import colors from "../../app/colors";
 
 const styles = StyleSheet.create({
   button: {
     width: "35%",
     padding: 5,
   },
-  centererView: { flex: 1, justifyContent: "center", alignItems: "center" },
+  centererView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: colors.backGround,
+  },
 });
 
 const ErrorScreen = ({ refetch, isFetching }) => {

@@ -10,11 +10,13 @@ import { getPokemonIdFromURL } from "../functions/generalFunctions";
 
 import LoadingScreen from "./CommonScreens/LoadingScreen";
 import ErrorScreen from "./CommonScreens/ErrorScreen";
+import colors from "../app/colors";
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: StatusBar.currentHeight || 0,
+    backgroundColor: colors.backGround,
   },
   buttonsContainer: {
     display: "flex",
@@ -60,16 +62,12 @@ const ListScreen = ({
 
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <View>
-          <PokemonsList
-            data={data}
-            bottomPagination={bottomPagination}
-            isFetching={isFetching}
-            refetch={refetch}
-          />
-        </View>
-      </View>
+      <PokemonsList
+        data={data}
+        bottomPagination={bottomPagination}
+        isFetching={isFetching}
+        refetch={refetch}
+      />
     </SafeAreaView>
   );
 };

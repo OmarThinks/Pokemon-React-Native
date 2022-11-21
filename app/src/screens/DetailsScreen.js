@@ -15,6 +15,8 @@ import Unorderedlist from "react-native-unordered-list";
 import ErrorScreen from "./CommonScreens/ErrorScreen";
 import LoadingScreen from "./CommonScreens/LoadingScreen";
 
+import colors from "../app/colors";
+
 /*
 abilities (V)
 moves (V)
@@ -129,7 +131,7 @@ const DisplayDetailsScreen = ({ data }) => {
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ ...styles.container }}>
       <ScrollView>
         <View style={{ padding: 30 }}>
           <Image
@@ -208,6 +210,7 @@ const styles = StyleSheet.create({
   },
 
   mainImage: { width: "100%", height: 300 },
+  container: { backgroundColor: colors.backGround },
 });
 
 export default DetailsScreen;

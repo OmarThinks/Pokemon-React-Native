@@ -4,6 +4,7 @@ import { Avatar, Card, IconButton } from "react-native-paper";
 import { getPokemonIdFromURL } from "../../functions/generalFunctions";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
+import colors from "../../app/colors";
 
 const PokemonCard = ({ item }) => {
   const navigation = useNavigation();
@@ -36,6 +37,7 @@ const styles = StyleSheet.create({
     padding: 20,
     marginVertical: 8,
     marginHorizontal: 16,
+    backgroundColor: colors.backGroundSurface,
   },
   title: {
     fontSize: 32,
