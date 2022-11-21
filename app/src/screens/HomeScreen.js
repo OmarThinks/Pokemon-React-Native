@@ -38,6 +38,7 @@ const ListScreen = ({
   incrementPage,
   decrementPage,
   isFetching,
+  refetch,
 }) => {
   const activityIndicator = isFetching ? (
     <View style={{ ...styles.centererView }}>
@@ -61,7 +62,12 @@ const ListScreen = ({
     <SafeAreaView style={styles.container}>
       <View>
         <View>
-          <PokemonsList data={data} bottomPagination={bottomPagination} />
+          <PokemonsList
+            data={data}
+            bottomPagination={bottomPagination}
+            isFetching={isFetching}
+            refetch={refetch}
+          />
         </View>
       </View>
     </SafeAreaView>
@@ -119,6 +125,7 @@ const HomeScreen = () => {
       decrementPage={decrementPage}
       data={data}
       isFetching={isFetching}
+      refetch={refetch}
     />
   ) : null;
 

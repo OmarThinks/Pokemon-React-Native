@@ -2,7 +2,7 @@ import { StyleSheet, StatusBar, FlatList, View } from "react-native";
 import PokemonCard from "../Cards/PokemonCard";
 import { Text } from "react-native-paper";
 
-const PokemonsList = ({ data, bottomPagination }) => {
+const PokemonsList = ({ data, bottomPagination, isFetching, refetch }) => {
   const renderItem = ({ item }) => <PokemonCard item={item} key={item.name} />;
 
   const headerComponent = (
@@ -20,6 +20,8 @@ const PokemonsList = ({ data, bottomPagination }) => {
         keyExtractor={(pokemon) => pokemon.name}
         ListFooterComponent={bottomPagination}
         ListHeaderComponent={headerComponent}
+        refreshing={isFetching}
+        onRefresh={refetch}
       />
     </View>
   );
