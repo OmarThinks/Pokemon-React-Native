@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     borderRadius: 16,
   },
   title: {
-    fontSize: 32,
+    fontSize: 28,
     paddingHorizontal: 10,
     color: colors.primaryTextColor,
   },
