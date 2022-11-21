@@ -169,26 +169,6 @@ const HomeScreen = () => {
   });
 
   return (
-    <View
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <View style={{ flex: 1 }}>
-        <PokemonListRoute />
-      </View>
-      <View style={{}}>
-        <Text>Hey</Text>
-        <Text>Hey</Text>
-        <Text>Hey</Text>
-      </View>
-    </View>
-  );
-
-  /*
     <BottomNavigation
       navigationState={{ index, routes }}
       onIndexChange={setIndex}
@@ -199,7 +179,7 @@ const HomeScreen = () => {
       activeColor={"blue"}
       inactiveColor={"blue"}
     />
-*/
+  );
 };
 
 export default HomeScreen;
