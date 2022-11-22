@@ -146,8 +146,8 @@ const DisplayDetailsScreen = ({ data }) => {
             <Image
               style={{
                 ...styles.mainImage,
-                width: ScreenWidth - 60,
-                height: ScreenWidth - 60,
+                width: ScreenWidth - 32,
+                height: ScreenWidth - 32,
               }}
               source={{
                 uri: imageURL,
@@ -218,6 +218,7 @@ const styles = StyleSheet.create({
     fontSize: 32,
     lineHeight: 38,
     color: colors.primaryTextColor,
+    paddingTop: 16,
   },
   paragraphContainer: {
     paddingHorizontal: 0,
