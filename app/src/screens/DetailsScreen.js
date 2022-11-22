@@ -131,16 +131,30 @@ const DisplayDetailsScreen = ({ data }) => {
   const imageURL = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`;
 
   return (
-    <SafeAreaView style={{ ...styles.container }}>
+    <SafeAreaView>
       <ScrollView>
-        <View style={{ padding: 30 }}>
-          <Image
-            style={{ ...styles.mainImage, width: ScreenWidth - 60 }}
-            source={{
-              uri: imageURL,
+        <View style={{ ...styles.container }}>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              justifyContent: "center",
+              paddingTop: 30,
             }}
-            resizeMode={"contain"}
-          />
+          >
+            <Image
+              style={{
+                ...styles.mainImage,
+                width: ScreenWidth - 60,
+                height: ScreenWidth - 60,
+              }}
+              source={{
+                uri: imageURL,
+              }}
+              resizeMode={"contain"}
+            />
+          </View>
 
           <View>
             <Text style={{ ...styles.title }}>Name:</Text>
@@ -198,21 +212,28 @@ const DetailsScreen = ({ route }) => {
 };
 
 const styles = StyleSheet.create({
+  container: { backgroundColor: colors.backGround, padding: 16 },
+
   title: {
-    fontSize: 40,
-    paddingTop: 30,
+    fontSize: 32,
+    lineHeight: 38,
     color: colors.primaryTextColor,
   },
   paragraphContainer: {
-    paddingLeft: 15,
+    paddingHorizontal: 0,
   },
   paragraph: {
-    fontSize: 24,
+    fontSize: 16,
+    lineHeight: 19,
     color: colors.secondaryTextColor,
   },
 
-  mainImage: { width: "100%", height: 300 },
-  container: { backgroundColor: colors.backGround },
+  mainImage: {
+    borderWidth: 1,
+    borderColor: "black",
+    borderRadius: 50,
+    backgroundColor: colors.backGroundSurface,
+  },
 });
 
 export default DetailsScreen;
