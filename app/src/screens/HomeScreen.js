@@ -14,6 +14,7 @@ import colors from "../app/colors";
 
 import * as React from "react";
 import { BottomNavigation } from "react-native-paper";
+import { Avatar } from "react-native-paper";
 
 const styles = StyleSheet.create({
   container: {
@@ -75,6 +76,44 @@ const ListScreen = ({
   );
 };
 
+const ActiveStar = () => (
+  <Image
+    source={require("../shapes/ActiveStar.png")}
+    style={{ width: 20, height: 20 }}
+  />
+);
+
+const ActiveChatSmile = () => (
+  <Image
+    source={require("../shapes/ActiveChatSmile.png")}
+    style={{ width: 20, height: 20 }}
+  />
+);
+const ActiveEdit = () => (
+  <Image
+    source={require("../shapes/ActiveEdit.png")}
+    style={{ width: 20, height: 20 }}
+  />
+);
+const IdleChatSmile = () => (
+  <Image
+    source={require("../shapes/IdleChatSmile.png")}
+    style={{ width: 20, height: 20 }}
+  />
+);
+const IdleEdit = () => (
+  <Image
+    source={require("../shapes/IdleEdit.png")}
+    style={{ width: 20, height: 20 }}
+  />
+);
+const IdleStar = () => (
+  <Image
+    source={require("../shapes/IdleStar.png")}
+    style={{ width: 20, height: 20 }}
+  />
+);
+
 const PokemonListRoute = () => {
   const [page, setPage] = useState(1);
   const incrementPage = () => {
@@ -133,19 +172,35 @@ const PokemonListRoute = () => {
   return toRender;
 };
 
-const AlbumsRoute = () => (
-  <View style={{ ...styles.centererView }}>
-    <Text>Albums</Text>
-    <Image
+const FavoritesRoute = () => (
+  <View style={{ ...styles.centererView, backgroundColor: colors.backGround }}>
+    <Text style={{ fontSize: 50 }}>Favorites</Text>
+    <Avatar.Image
+      size={100}
       source={require("../shapes/ActiveStar.png")}
-      style={{ width: 40, height: 40 }}
+      style={{ backgroundColor: "transparent" }}
+    />
+    <Avatar.Image
+      size={100}
+      source={require("../shapes/IdleStar.png")}
+      style={{ backgroundColor: "transparent" }}
     />
   </View>
 );
 
-const RecentsRoute = () => (
-  <View style={{ ...styles.centererView }}>
-    <Text>Recents</Text>
+const EditRoute = () => (
+  <View style={{ ...styles.centererView, backgroundColor: colors.backGround }}>
+    <Text style={{ fontSize: 50 }}>Edit</Text>
+    <Avatar.Image
+      size={100}
+      source={require("../shapes/ActiveEdit.png")}
+      style={{ backgroundColor: "transparent" }}
+    />
+    <Avatar.Image
+      size={100}
+      source={require("../shapes/IdleEdit.png")}
+      style={{ backgroundColor: "transparent" }}
+    />
   </View>
 );
 
@@ -155,20 +210,30 @@ const HomeScreen = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {
-      key: "music",
-      focusedIcon: f1,
-      unfocusedIcon: f1,
+      key: "pokemons",
+      focusedIcon: ActiveChatSmile,
+      unfocusedIcon: IdleChatSmile,
       badge: false,
-      title: "Hey",
+      title: "Pokemons",
     },
-    { key: "albums", focusedIcon: "album" },
-    { key: "recents", focusedIcon: "history" },
+    {
+      key: "favorites",
+      focusedIcon: ActiveStar,
+      unfocusedIcon: IdleStar,
+      title: "Favorites",
+    },
+    {
+      key: "edit",
+      focusedIcon: ActiveEdit,
+      unfocusedIcon: IdleEdit,
+      title: "Edit",
+    },
   ]);
 
   const renderScene = BottomNavigation.SceneMap({
-    music: PokemonListRoute,
-    albums: AlbumsRoute,
-    recents: RecentsRoute,
+    pokemons: PokemonListRoute,
+    favorites: FavoritesRoute,
+    edit: EditRoute,
   });
 
   return (
