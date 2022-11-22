@@ -15,6 +15,9 @@ import colors from "../app/colors";
 import * as React from "react";
 import { BottomNavigation } from "react-native-paper";
 
+import { SvgXml } from "react-native-svg";
+import ActiveChatSmile from "../shapes/active-chat-smile.svg";
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
