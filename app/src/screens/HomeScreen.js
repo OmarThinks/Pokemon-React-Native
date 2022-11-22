@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, Image } from "react-native";
 import { useGetPokemonsPaginatorQuery, usePrefetch } from "../services/pokemon";
 import { useState, useCallback, useEffect } from "react";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
@@ -14,9 +14,6 @@ import colors from "../app/colors";
 
 import * as React from "react";
 import { BottomNavigation } from "react-native-paper";
-
-import { SvgXml } from "react-native-svg";
-import ActiveChatSmile from "../shapes/active-chat-smile.svg";
 
 const styles = StyleSheet.create({
   container: {
@@ -139,6 +136,10 @@ const PokemonListRoute = () => {
 const AlbumsRoute = () => (
   <View style={{ ...styles.centererView }}>
     <Text>Albums</Text>
+    <Image
+      source={require("../shapes/ActiveStar.png")}
+      style={{ width: 40, height: 40 }}
+    />
   </View>
 );
 
