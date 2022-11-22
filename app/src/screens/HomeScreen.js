@@ -3,7 +3,7 @@ import { useGetPokemonsPaginatorQuery, usePrefetch } from "../services/pokemon";
 import { useState, useCallback, useEffect } from "react";
 import { SafeAreaView, StyleSheet, StatusBar, ScrollView } from "react-native";
 import PokemonsList from "../components/Lists/PokemonList";
-import { ActivityIndicator } from "react-native-paper";
+import { ActivityIndicator, useTheme } from "react-native-paper";
 import { Button } from "react-native-paper";
 import PaginationButtons from "../components/PaginationButtons";
 import { getPokemonIdFromURL } from "../functions/generalFunctions";
@@ -203,8 +203,6 @@ const EditRoute = () => (
     />
   </View>
 );
-
-const f1 = () => <Text>hiii</Text>;
 
 const HomeScreen = () => {
   const [index, setIndex] = React.useState(0);

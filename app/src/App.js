@@ -16,9 +16,6 @@ const Stack = createNativeStackNavigator();
 
 const theme = {
   ...DefaultTheme,
-  // Specify custom property
-  myOwnProperty: true,
-  // Specify custom property in nested object
   colors: {
     backGround: "#E5E5E5",
     backGroundSurface: "#FFFFFF",
