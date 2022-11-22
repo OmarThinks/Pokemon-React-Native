@@ -31,6 +31,11 @@ PokeAPI: https://pokeapi.co/
 
 # Design:
 
+I have found this design and implemented it.  
+Special thanks to the designer for keeping this design open for the public.
+
+**https://www.figma.com/community/file/1169058964714403349**
+
 <img src="Media/ScreenShots/Design1.png" width="200"/>
 <img src="Media/ScreenShots/Design2.png" width="200"/>
 
