@@ -29,6 +29,11 @@ PokeAPI: https://pokeapi.co/
 - React Navigation
   - To switch between screens
 
+# Design:
+
+<img src="Media/ScreenShots/Design1.png" width="200"/>
+<img src="Media/ScreenShots/Design2.png" width="200"/>
+
 # ScreenShots:
 
 <img src="Media/ScreenShots/01.png" width="200"/>
@@ -37,3 +42,6 @@ PokeAPI: https://pokeapi.co/
 <img src="Media/ScreenShots/04.png" width="200"/>
 <img src="Media/ScreenShots/05.png" width="200"/>
 <img src="Media/ScreenShots/06.png" width="200"/>
+<img src="Media/ScreenShots/07.png" width="200"/>
+<img src="Media/ScreenShots/08.png" width="200"/>
+<img src="Media/ScreenShots/09.png" width="200"/>
