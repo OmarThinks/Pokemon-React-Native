@@ -39,7 +39,7 @@ Special thanks to the designer for keeping this design open for the public.
 <img src="Media/ScreenShots/Design1.png" width="200"/>
 <img src="Media/ScreenShots/Design2.png" width="200"/>
 
-# ScreenShots:
+# My Implementation:
 
 <img src="Media/ScreenShots/01.png" width="200"/>
 <img src="Media/ScreenShots/02.png" width="200"/>
