@@ -13,6 +13,12 @@ const PokemonsList = ({ data, bottomPagination, isFetching, refetch }) => {
     </View>
   );
 
+
+
+
+
+
+  
   const toReturn = (
     <View>
       <FlatList
@@ -26,6 +32,14 @@ const PokemonsList = ({ data, bottomPagination, isFetching, refetch }) => {
       />
     </View>
   );
+
+
+
+  
+
+
+
+
 
   return toReturn;
 };
