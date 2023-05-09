@@ -116,3 +116,40 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- TODO: Clear conmtent of APP
+- TODO: Enable Redux
+- TODO: Seperate App.tsx in src
+- TODO: prepare components floder
+- TODO:Prepare screens folder
+- TODO: Prepare theme folder
+- TODO:Enable React Navigation
+- TODO:Install React Native paper
+- TODO:make the theme work
+- TODO:Make the icons work
+- TODO:Create the navigations folder
+
+
+
+ASDHJGAHDJS    ADSJHGAJHSDASHJDGA D ASHDGA SDHGASDA  AHSGD ASHD  ASDHJG ASHDG
+ASDHGSDSDGAHDGSH  ASDHGDSAHGSDA HASDGHASDG HG
+
+*/
+
+//     Heyyy     SAJHHG ashgfSHGFHGASDFHGDSA AJHSDGAJHDSGAJHGDJHAS
+//     DASJGDJAHSGDJHAGSDJHGAJSHD ASDHGAJHSDGJAHSGDJAHSGDJAHSD ASJHDGAJSHDGAJHSD
